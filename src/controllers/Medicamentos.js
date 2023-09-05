@@ -82,4 +82,26 @@ export class Medicamentos {
       await closeConnection()
     }
   }
+
+  static async getMedicamentosMasCaro (req, res) {
+    try {
+      const db = await connect()
+      const medicamentos = db.collection('medicamentos')
+      const result = await medicamentos.aggregate([
+        {
+          $group: {
+            _id: 'valor medicamento mas caro',
+            valor: { $max: '$precioCaja' }
+          }
+        }
+
+      ]).toArray()
+      res.status(200).json({ status: 200, data: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: 404, message: 'Error al traer el medicamento mas caro' })
+    } finally {
+      await closeConnection()
+    }
+  }
 }

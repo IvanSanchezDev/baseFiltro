@@ -12,3 +12,4 @@ routes.get('/getMedicamentosless50unidades', Medicamentos.getMedicamentosless50u
 routes.get('/getMedicamentosProveedorEspecifico', Medicamentos.getMedicamentosProveedorEspecifico)
 routes.get('/getMedicamentosCaducanBefore1Enero', Medicamentos.getMedicamentosCaducanBefore1Enero)
 routes.get('/getMedicamentosNoVendidos', Medicamentos.getMedicamentosNoVendidos)
+routes.get('/getMedicamentosMasCaro', Medicamentos.getMedicamentosMasCaro)
