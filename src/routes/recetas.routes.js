@@ -9,3 +9,4 @@ export const routes = Router()
 // routes.get('/medicamentos', [passport.authenticate('bearer', { session: false })], version({ '1.0.0': Medicamentos.getMedicamentosless50unidades }))
 
 routes.get('/getRecetasAfter1Enero', Recetas.getRecetasAfter1Enero)
+routes.get('/getRecetasPrescritarByDoctor', Recetas.getRecetasPrescritarByDoctor)
