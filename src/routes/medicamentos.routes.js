@@ -10,3 +10,4 @@ export const routes = Router()
 
 routes.get('/getMedicamentosless50unidades', Medicamentos.getMedicamentosless50unidades)
 routes.get('/getMedicamentosProveedorEspecifico', Medicamentos.getMedicamentosProveedorEspecifico)
+routes.get('/getMedicamentosCaducanBefore1Enero', Medicamentos.getMedicamentosCaducanBefore1Enero)
