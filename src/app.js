@@ -5,17 +5,18 @@ import { routes as routesVentas } from './routes/ventas.routes.js'
 import { routes as routesRecetas } from './routes/recetas.routes.js'
 import { routes as routesProveedor } from './routes/proveedor.routes.js'
 import { routes as routesAuth } from './routes/auth.routes.js'
-
+import passport from './middlewares/passport-http-bearer.js'
+import { limitUsuario } from './middlewares/limit.js'
 config()
 const app = express()
 
 app.use(express.json())
 
-app.use('/medicamentos', routesMedicamentos)
-app.use('/ventas', routesVentas)
-app.use('/recetas', routesRecetas)
-app.use('/proveedor', routesProveedor)
-app.use('/auth', routesAuth)
+app.use('/medicamentos', [passport.authenticate('bearer', { session: false }), limitUsuario()], routesMedicamentos)
+app.use('/ventas', [passport.authenticate('bearer', { session: false }), limitUsuario()], routesVentas)
+app.use('/recetas', [passport.authenticate('bearer', { session: false }), limitUsuario()], routesRecetas)
+app.use('/proveedor', [passport.authenticate('bearer', { session: false }), limitUsuario()], routesProveedor)
+app.use('/auth', limitUsuario(), routesAuth)
 
 app.use((req, res) => {
   res.status(400).json({ status: '400', message: 'Ruta no encontrada' })
