@@ -5,8 +5,9 @@ INSTALACION
 2. accede al proyecto
 3. instala las dependencias necesarias npm i
 4. configura la cadena de conexion en el archivo src/database/connection.js y el archivo  .env  (solo si es necesario)
-5. corre el proyecto npm run dev
-6. registarte e inicia sesion y genera el token de acceso 
+5. Ejecutar la base de datos en src/database/schemasFarmacia.mongodb.js
+6. corre el proyecto npm run dev
+7. registarte e inicia sesion y genera el token de acceso 
 
 
 GENERACION TOKEN DE ACCESO
