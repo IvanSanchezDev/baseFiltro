@@ -4,7 +4,7 @@ INSTALACION
 1. Clona el repositorio o descarga el .zip
 2. accede al proyecto
 3. instala las dependencias necesarias npm i
-4. configura la cadena de conexion y el .env  (solo si es necesario)
+4. configura la cadena de conexion en el archivo src/database/connection.js y el archivo  .env  (solo si es necesario)
 5. corre el proyecto npm run dev
 6. registarte e inicia sesion y genera el token de acceso 
 
@@ -24,7 +24,7 @@ datos entrada: {
 
 2. Inicia sesion para generar el token de acceso a los recursos => POST http://localhost:1234/auth/login
 datos entrada: {
-  "username": "andres",
+  "username": "Andres",
   "password": "prueba"
 }
 
@@ -47,8 +47,8 @@ Todos son metodos GET
 5. Obtener recetas médicas emitidas después del 1 de enero de 2023 => http://localhost:1234/recetas/getRecetasAfter1Enero
 6. Recetas prescritas por el Dr. Martínez => http://localhost:1234/recetas/getRecetasPrescritarByDoctor?nombreDoctor=Martinez
 7. Medicamentos que caducan antes del 1 de enero de 2024  => http://localhost:1234/medicamentos/getMedicamentosCaducanBefore1Enero
-8. Medicamentos que no han sido vendidos => http://localhost:1234/medicamentos/getMedicamentosNoVendidos
+8. Medicamentos que no han sido vendidos => http://localhost:1234/medicamentos/getMedicamentosNoVendidos (estado 0 significa no vendido)
 9. Obtener el medicamento más caro => http://localhost:1234/medicamentos/getMedicamentosMasCaro
 10. Número de medicamentos por proveedor => http://localhost:1234/proveedor/getMedicamentosByProveedor
-11. Obtener el total de medicamentos vendidos en marzo de 2023 => http://localhost:1234/ventas/getVentasOctubre
+11. Obtener el total de medicamentos vendidos en marzo de 2023 => http://localhost:1234/ventas/getVentasMarzo
 12. Promedio de medicamentos comprados por venta =>  http://localhost:1234/ventas/getPromedioMedicamento
