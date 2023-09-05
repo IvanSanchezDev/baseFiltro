@@ -1,7 +1,6 @@
 import { Router } from 'express'
 import routesVersioning from 'express-routes-versioning'
-import { Ventas } from '../controllers/Ventas'
-
+import { Ventas } from '../controllers/Ventas.js'
 
 export const routes = Router()
 
@@ -10,3 +9,4 @@ export const routes = Router()
 // routes.get('/medicamentos', [passport.authenticate('bearer', { session: false })], version({ '1.0.0': Medicamentos.getMedicamentosless50unidades }))
 
 routes.get('/getVentasParacetamol', Ventas.getVentasParacetamol)
+routes.get('/getTotalDineroRecaudado', Ventas.getTotalDineroRecaudado)
