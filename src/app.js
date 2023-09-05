@@ -1,10 +1,13 @@
 import express from 'express'
 import { config } from 'dotenv'
+import { routes as routesMedicamentos } from './routes/router.medicamentos.js'
 
 config()
 const app = express()
 
 app.use(express.json())
+
+app.use('/medicamentos', routesMedicamentos)
 
 app.use((req, res) => {
   res.status(400).json({ status: '400', message: 'Ruta no encontrada' })
