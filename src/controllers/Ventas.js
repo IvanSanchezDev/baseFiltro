@@ -65,4 +65,22 @@ export class Ventas {
       await closeConnection()
     }
   }
+
+  static async getVentasOctubre (req, res) {
+    try {
+      const db = await connect()
+      const ventas = db.collection('ventas')
+      const result = await ventas.aggregate([
+        {
+          $match: { fechaVenta: { $gte: new Date('2023-03-01'), $lt: new Date('2023-04-01') } }
+        }
+      ]).toArray()
+      res.status(200).json({ status: 200, data: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: 404, message: 'Error al traer el total dinero recaudado' })
+    } finally {
+      await closeConnection()
+    }
+  }
 }
