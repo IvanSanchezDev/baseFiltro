@@ -209,7 +209,7 @@ db.proveedores.insertMany([
   {
     id: 1,
     nit: 31561156,
-    nombre: 'LABORATORIO MYM'
+    nombre: 'LABORATORIOMYM'
   },
   {
     id: 2,
