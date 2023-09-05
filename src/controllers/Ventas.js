@@ -66,7 +66,7 @@ export class Ventas {
     }
   }
 
-  static async getVentasOctubre (req, res) {
+  static async getVentasMarzo (req, res) {
     try {
       const db = await connect()
       const ventas = db.collection('ventas')

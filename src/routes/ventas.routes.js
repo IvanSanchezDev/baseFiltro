@@ -10,5 +10,5 @@ export const routes = Router()
 
 routes.get('/getVentasParacetamol', Ventas.getVentasParacetamol)
 routes.get('/getTotalDineroRecaudado', Ventas.getTotalDineroRecaudado)
-routes.get('/getVentasOctubre', Ventas.getVentasOctubre)
+routes.get('/getVentasMarzo', Ventas.getVentasMarzo)
 routes.get('/getPromedioMedicamento', Ventas.getPromedioMedicamento)
