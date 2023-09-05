@@ -34,7 +34,7 @@ datos entrada: {
 Ejemplo:
 
 |  Headers      |      value          |
-|-------------------------------------|
+|---------------|---------------------|
 | Authorization | bearer your_api_key |
 
 Documentacion EndPoints
