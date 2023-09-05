@@ -1,6 +1,6 @@
 import { MongoClient, ServerApiVersion } from 'mongodb'
 
-const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@clusterauthenticacion.lobajpy.mongodb.net/`
+const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@cluster0.e7umrrf.mongodb.net/`
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -13,7 +13,7 @@ const client = new MongoClient(uri, {
 export async function connect () {
   try {
     await client.connect()
-    const database = client.db('#nombreDatabase')
+    const database = client.db('facturacionCampus_IvanSanchez')
     return database
   } catch (error) {
     console.log(error)
