@@ -33,7 +33,7 @@ datos entrada: {
 
 Ejemplo:
 
-|  Headers                            |
+|  Headers      |      value          |
 |-------------------------------------|
 | Authorization | bearer your_api_key |
 
@@ -42,7 +42,7 @@ Documentacion EndPoints
 Todos son metodos GET
 
 1. Obtener todos los medicamentos con menos de 50 unidades en stock => http://localhost:1234/medicamentos/getMedicamentosless50unidades
-2. Medicamentos comprados al 'Proveedor A' => http://localhost:1234/medicamentos/getMedicamentosProveedorEspecifico/?proveedor=LABORATORIO MYM
+2. Medicamentos comprados al 'Proveedor A' => http://localhost:1234/medicamentos/getMedicamentosProveedorEspecifico/?proveedor=LABORATORIOMYM
 3.  Total de ventas del medicamento 'Paracetamol' => http://localhost:1234/ventas/getVentasParacetamol
 4. Total Dinero recaudo en ventas de medicamentos => http://localhost:1234/ventas/getTotalDineroRecaudado
 5. Obtener recetas médicas emitidas después del 1 de enero de 2023 => http://localhost:1234/recetas/getRecetasAfter1Enero
