@@ -215,6 +215,10 @@ db.proveedores.insertMany([
     id: 2,
     nit: 9875652215,
     nombre: 'LABORATORIO XX'
+  }, {
+    id: 3,
+    nit: 45687215,
+    nombre: 'LABORATORIO QW'
   }
 ])
 
@@ -253,6 +257,24 @@ db.medicamentos.insertMany([
     precioCaja: 1500,
     stock: 60,
     fechaExpiracion: new Date('2023-08-15'),
+    estado: 1,
+    idProveedor: 2
+  },
+  {
+    id: 5,
+    nombre: 'Jarabe para la tos',
+    precioCaja: 7000,
+    stock: 30,
+    fechaExpiracion: new Date('2021-03-07'),
+    estado: 0,
+    idProveedor: 1
+  },
+  {
+    id: 6,
+    nombre: 'Vitamina C',
+    precioCaja: 10000,
+    stock: 60,
+    fechaExpiracion: new Date('2021-08-15'),
     estado: 1,
     idProveedor: 2
   }
@@ -307,6 +329,14 @@ db.ventas.insertMany([
     idMedicamento: 2,
     idPaciente: 2,
     idEmpleado: 2
+  }, {
+    id: 3,
+    cantidad: 5,
+    precioTotal: 50000,
+    fechaVenta: new Date('2023-03-15'),
+    idMedicamento: 6,
+    idPaciente: 2,
+    idEmpleado: 2
   }
 ])
 
@@ -336,3 +366,11 @@ db.recetas.insertMany([
     prescritasBy: 'Marcos Palacis'
   }
 ])
+
+use('facturacionCampus_IvanSanchez')
+db.ventas.aggregate([{
+  $group: {
+    _id: null,
+    'Promedio de medicamentos': { $avg: '$cantidad' }
+  }
+}])
