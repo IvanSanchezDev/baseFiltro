@@ -175,6 +175,36 @@ db.createCollection('recetas', {
 })
 
 use('facturacionCampus_IvanSanchez')
+db.createCollection('usuarios', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: ['username', 'password', 'rol'],
+      properties: {
+        username: {
+          bsonType: 'string',
+          description: 'el username es obligatorio'
+        },
+        password: {
+          bsonType: 'string',
+          description: 'la passowrd es obligatoria'
+        },
+        rol: {
+          bsonType: 'int',
+          description: 'el rol debe ser de tipo int (0:admin, 1:paciente)'
+        },
+        permisos: {
+          bsonType: 'array',
+          items: {
+            bsonType: 'string'
+          }
+        }
+      }
+    }
+  }
+})
+
+use('facturacionCampus_IvanSanchez')
 db.proveedores.insertMany([
   {
     id: 1,
@@ -304,26 +334,5 @@ db.recetas.insertMany([
     medicamentos: [2],
     fechaEmision: new Date('2021-05-01'),
     prescritasBy: 'Marcos Palacis'
-  }
-])
-
-use('facturacionCampus_IvanSanchez')
-db.proveedores.aggregate([
-  {
-    $lookup: {
-      from: 'medicamentos',
-      localField: 'id',
-      foreignField: 'idProveedor',
-      as: 'medicamentos'
-    }
-  },
-  {
-    $unwind: '$medicamentos'
-  },
-  {
-    $group: {
-      _id: '$nombre',
-      medicamentos: { $sum: 1 }
-    }
   }
 ])
