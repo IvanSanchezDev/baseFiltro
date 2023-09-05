@@ -15,4 +15,35 @@ export class Medicamentos {
       await closeConnection()
     }
   }
+
+  static async getMedicamentosProveedorEspecifico (req, res) {
+    try {
+      const proveedor = req.query.proveedor
+      const db = await connect()
+      const medicamentos = db.collection('medicamentos')
+      const result = await medicamentos.aggregate([
+        {
+          $lookup: {
+            from: 'proveedores',
+            localField: 'idProveedor',
+            foreignField: 'id',
+            as: 'proveedor'
+          }
+        },
+        {
+          $unwind: '$proveedor'
+        },
+        {
+          $match: { 'proveedor.nombre': { $eq: proveedor } }
+        }
+
+      ]).toArray()
+      res.status(200).json({ status: 200, data: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: 404, message: 'Error al traer los medicamentos comprados a un proveedor en especifico' })
+    } finally {
+      await closeConnection()
+    }
+  }
 }
