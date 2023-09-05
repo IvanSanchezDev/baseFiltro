@@ -1,10 +1,13 @@
 import { MongoClient, ServerApiVersion } from 'mongodb'
+import { config } from 'dotenv'
+
+config()
 
 const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@cluster0.e7umrrf.mongodb.net/`
 
 const client = new MongoClient(uri, {
   serverApi: {
-    version: ServerApiVersion,
+    version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true
   }
