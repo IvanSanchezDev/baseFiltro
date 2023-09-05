@@ -1,34 +1,22 @@
 import { body } from 'express-validator'
 
-export const ejemploValidator = [
+export const registerValidator = [
 
-  body('nombre')
+  body('username')
     .notEmpty()
     .isString()
-    .withMessage('mensaje personalizado'),
-
-  body('edad')
+    .withMessage('el nombre debe ser de tipo string'),
+  body('password')
+    .notEmpty()
+    .isString()
+    .withMessage('la contraseña debe ser de tipo string'),
+  body('rol')
     .notEmpty()
     .isNumeric()
-    .withMessage('mensaje personalizado'),
-  body('habilidades')
+    .withMessage('el rol debe ser de tipo numerico (0 o 1)'),
+  body('permisos')
     .isArray()
-    .notEmpty()
-    .withMessage('msg')
-    .custom(values => {
-      return values.every(arlInfo => {
-        const requiredFields = ['jugar', 'estudiar', 'correr']
-        return requiredFields.every(field => field in arlInfo)
-      })
-    })
-    .withMessage('debe contener los valores'),
-  body('fecha')
-    .notEmpty()
-    .isISO8601()
-    .withMessage('El formato de fecha debe ser ISO 8601'),
-  // PARA ARRAYS= CONVERTIR EL ID RECIBIDO EN OBJECT ID
-  // si es un array que todos los elementos cumplan con eso
-  body('detalle.responsables.*').notEmpty().customSanitizer(value => new ObjectId(value)),
-  body('detalle.fecha_inicio').optional().notEmpty().isISO8601().customSanitizer(value => new Date(value))
-
+    .optional()
+    .withMessage('los permisos son de tipo array'),
+  body('permisos.*').isString().withMessage('las permisos son de tipo string')
 ]
