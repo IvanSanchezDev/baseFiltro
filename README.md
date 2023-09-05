@@ -29,7 +29,7 @@ datos entrada: {
   "password": "prueba"
 }
 
-3. Copiar el token generado y pegar en el Header con el nombre Authorization y la palabra reservada header
+3. Copiar el token generado y pegar en el Header con el nombre Authorization y la palabra reservada bearer
 
 Ejemplo:
 
