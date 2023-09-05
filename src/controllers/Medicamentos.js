@@ -65,5 +65,21 @@ export class Medicamentos {
     }
   }
 
-
+  static async getMedicamentosNoVendidos (req, res) {
+    try {
+      const db = await connect()
+      const medicamentos = db.collection('medicamentos')
+      const result = await medicamentos.aggregate([
+        {
+          $match: { estado: { $eq: 0 } }
+        }
+      ]).toArray()
+      res.status(200).json({ status: 200, data: result })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ status: 404, message: 'Error al traer los medicamentos que no se han vendido' })
+    } finally {
+      await closeConnection()
+    }
+  }
 }
